@@ -3,14 +3,31 @@
 
 void Contact::setContact()
 {
-    std::cout << "First name: ";
-    std::getline(std::cin, firstName);
-    std::cout << "Last name: ";
-    std::getline(std::cin, lastName);
-    std::cout << "Nick name: ";
-    std::getline(std::cin, nickName);
-    std::cout << "Darkest secret: ";
-    std::getline(std::cin, darkestSecret);
+    do
+    {
+        std::cout << "First name: ";
+        std::getline(std::cin, firstName);
+    } while (firstName.empty());
+    do
+    {
+        std::cout << "Last name: ";
+        std::getline(std::cin, lastName);
+    } while (lastName.empty());
+    do
+    {
+        std::cout << "Nick name: ";
+        std::getline(std::cin, nickName); /* code */
+    } while (nickName.empty());
+    do
+    {
+        std::cout << "Phone Number: ";
+        std::getline(std::cin, phoneNumber); /* code */
+    } while (phoneNumber.empty());
+    do
+    {
+        std::cout << "Darkest secret: ";
+        std::getline(std::cin, darkestSecret); /* code */
+    } while (darkestSecret.empty());
 };
 
 void Contact::displayContact()
@@ -25,4 +42,12 @@ void Contact::displayContact()
 std::string Contact::getFirstName()
 {
     return (firstName);
+}
+std::string Contact::getLastName()
+{
+    return (lastName);
+}
+std::string Contact::getNickName()
+{
+    return (nickName);
 }
