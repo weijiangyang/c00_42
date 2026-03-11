@@ -45,6 +45,8 @@ Account:: ~Account(void)
               << ";amount:" << _amount
               << ";closed"
               << std::endl;
+	_nbAccounts--;
+	_totalAmount -= _amount;
 }
 
 void Account::displayAccountsInfos()
