@@ -1,5 +1,5 @@
-#include <iostream>
-#include <cctype>
+#include <iostream> // cout
+#include <cctype> // toupper(char)
 
 int main(int argc, char **argv)
 {
