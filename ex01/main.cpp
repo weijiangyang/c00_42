@@ -12,9 +12,9 @@ int main()
         std::getline(std::cin, command);
         if (command == "ADD")
             phoneBook.addContact();
-        if (command == "SEARCH")
+        else if (command == "SEARCH")
             phoneBook.searchContact();
-        if (command == "EXIT")
+        else if (command == "EXIT")
             break ;
     }
     return (0);

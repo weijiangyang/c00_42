@@ -16,17 +16,17 @@ void Contact::setContact()
     do
     {
         std::cout << "Nick name: ";
-        std::getline(std::cin, nickName); /* code */
+        std::getline(std::cin, nickName);
     } while (nickName.empty());
     do
     {
         std::cout << "Phone Number: ";
-        std::getline(std::cin, phoneNumber); /* code */
+        std::getline(std::cin, phoneNumber);
     } while (phoneNumber.empty());
     do
     {
         std::cout << "Darkest secret: ";
-        std::getline(std::cin, darkestSecret); /* code */
+        std::getline(std::cin, darkestSecret);
     } while (darkestSecret.empty());
 };
 
