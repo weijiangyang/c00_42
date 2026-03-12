@@ -1,10 +1,17 @@
 #include "Contact.hpp"
 #include <iostream>
 
+void rtrim(std::string& str)
+{
+	std::size_t end = str.find_last_not_of(" \t");
+	if (end == std::string::npos)
+		str = "";
+	else
+		str = str.substr(0, end + 1);
+}
 /**
  * 设置联系人信息
  * 使用 do-while 循环确保用户输入的每一个字段都不为空
- * 这是 42 项目中常见的防止非法/空输入的方法
  */
 void Contact::setContact()
 {
@@ -12,36 +19,46 @@ void Contact::setContact()
     do
     {
         std::cout << "First name: ";
-        std::getline(std::cin, firstName);
-    } while (firstName.empty());
+        if (!std::getline(std::cin, firstName))
+			return ;
+		rtrim(firstName);
+    } while (firstName.find_first_not_of(" \t") == std::string::npos);
 
     // 获取姓氏
     do
     {
         std::cout << "Last name: ";
-        std::getline(std::cin, lastName);
-    } while (lastName.empty());
+        if (!std::getline(std::cin, lastName))
+			return ;
+		rtrim(lastName);
+    } while (lastName.find_first_not_of(" \t") == std::string::npos);
 
     // 获取昵称
     do
     {
         std::cout << "Nick name: ";
-        std::getline(std::cin, nickName);
-    } while (nickName.empty());
+        if (!std::getline(std::cin, nickName))
+			return ;
+		rtrim(nickName);
+    } while (nickName.find_first_not_of(" \t") == std::string::npos);
 
     // 获取电话号码
     do
     {
         std::cout << "Phone Number: ";
-        std::getline(std::cin, phoneNumber);
-    } while (phoneNumber.empty());
+        if (!std::getline(std::cin, phoneNumber))
+			return ;
+		rtrim(phoneNumber);
+    } while (phoneNumber.find_first_not_of(" \t") == std::string::npos);
 
     // 获取最阴暗的秘密
     do
     {
         std::cout << "Darkest secret: ";
-        std::getline(std::cin, darkestSecret);
-    } while (darkestSecret.empty());
+        if (!std::getline(std::cin, darkestSecret))
+			return ;
+		rtrim(darkestSecret) ;
+    } while (darkestSecret.find_first_not_of(" \t") == std::string::npos);
 };
 
 /**

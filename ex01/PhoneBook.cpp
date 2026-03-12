@@ -66,25 +66,29 @@ void PhoneBook::searchContact()
     };
 
     // 获取用户输入的索引
-    std::cout << "Enter index: ";
-    if (!std::getline(std::cin, line)) // 检查 EOF
-        return;
-
-    // 使用 stringstream 安全地将字符串转换为整数
-    std::stringstream ss(line);
-    if (!(ss >> index))
-    {
-        std::cout << "Invalid index" << std::endl;
-        return;
-    }
-
-    // 索引边界检查
-    if (index >= total || index < 0)
-    {
-        std::cout << "There is not this index in the list of contacts" << std::endl;
-        return ;
-    }
-
+   	while (true)
+	{
+		std::cout << "Enter index: ";
+		if (!std::getline(std::cin, line))
+			return ;
+		std::stringstream ss(line);
+		if (!(ss >> index))
+		{
+			std::cout << "Invald index"<< std::endl;
+			continue;
+		}
+		if ((index >= total || index < 0) && total)
+		{
+			std::cout << "There is not this index in the list of contacts" << std::endl;
+			continue;
+		}
+		if (total == 0)
+		{
+			std::cout << "There is not any contact in the list" << std:: endl;
+			break;
+		}
+		break;
+	}
     // 检查通过，显示该联系人的完整详情
     if (total > 0)
         contacts[index].displayContact();
