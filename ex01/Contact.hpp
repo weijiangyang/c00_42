@@ -12,6 +12,7 @@ class Contact
         std::string phoneNumber;
         std::string darkestSecret;
     public:
+		Contact();
         void setContact();
         void displayContact();
         std::string getFirstName();

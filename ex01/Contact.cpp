@@ -1,6 +1,9 @@
 #include "Contact.hpp"
 #include <iostream>
 
+Contact::Contact()
+{}
+
 void rtrim(std::string &str)
 {
 	std::size_t end = str.find_last_not_of(" \t");
@@ -10,43 +13,31 @@ void rtrim(std::string &str)
 		str = str.substr(0, end + 1);
 }
 
-void Contact::setContact()
+bool promptField(const std::string& prompt, std::string& field)
 {
 	do
 	{
-		std::cout << "First name: ";
-		if (!std::getline(std::cin, firstName))
-			return;
-		rtrim(firstName);
-	} while (firstName.find_first_not_of(" \t") == std::string::npos);
-	do
-	{
-		std::cout << "Last name: ";
-		if (!std::getline(std::cin, lastName))
-			return;
-		rtrim(lastName);
-	} while (lastName.find_first_not_of(" \t") == std::string::npos);
-	do
-	{
-		std::cout << "Nick name: ";
-		if (!std::getline(std::cin, nickName))
-			return;
-		rtrim(nickName);
-	} while (nickName.find_first_not_of(" \t") == std::string::npos);
-	do
-	{
-		std::cout << "Phone Number: ";
-		if (!std::getline(std::cin, phoneNumber))
-			return;
-		rtrim(phoneNumber);
-	} while (phoneNumber.find_first_not_of(" \t") == std::string::npos);
-	do
-	{
-		std::cout << "Darkest secret: ";
-		if (!std::getline(std::cin, darkestSecret))
-			return;
-		rtrim(darkestSecret);
-	} while (darkestSecret.find_first_not_of(" \t") == std::string::npos);
+		std::cout << prompt;
+		if (!std::getline(std::cin, field))
+			return (false);
+		rtrim(field);
+	} while (field.find_first_not_of(" \t") == std::string::npos);
+	return (true);
+}
+
+void Contact::setContact()
+{
+	if (!promptField("First name: ", firstName))
+		return ;
+	if (!promptField("Last name: ", lastName))
+		return ;
+	if (!promptField("Nick name: ", nickName))
+		return ;
+	
+	if (!promptField("Phone number: ", phoneNumber))
+		return ;
+	if (!promptField("Darkest secret: ", darkestSecret))
+		return ;
 };
 
 void Contact::displayContact()
